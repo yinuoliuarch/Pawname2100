@@ -1,0 +1,3322 @@
+{
+  "sources": {
+    "dog_licenses": "https://data.cityofnewyork.us/Health/NYC-Dog-Licensing-Dataset/nu7n-tubp",
+    "zcta_boundaries": "https://data.cityofnewyork.us/City-Government/ZIP-Code-Tabulation-Areas/35j5-n34v",
+    "nta_boundaries": "https://data.cityofnewyork.us/City-Government/2020-Neighborhood-Tabulation-Areas-NTAs-Mapped/4hft-v355"
+  },
+  "steps": [
+    {
+      "step": 2,
+      "label": "exact duplicates",
+      "before": 819323,
+      "after": 778023
+    },
+    {
+      "step": 3,
+      "label": "repeated license periods",
+      "before": 778023,
+      "after": 664051
+    },
+    {
+      "step": 4,
+      "label": "normalize fields",
+      "before": 664051,
+      "after": 664051
+    },
+    {
+      "step": 5,
+      "label": "missing or placeholder names",
+      "before": 664051,
+      "after": 635433
+    },
+    {
+      "step": 6,
+      "label": "invalid birth years",
+      "before": 635433,
+      "after": 635352
+    },
+    {
+      "step": 7,
+      "label": "2018-2022 seed window",
+      "before": 635352,
+      "after": 171645
+    },
+    {
+      "step": 8,
+      "label": "invalid ZIP values",
+      "before": 171645,
+      "after": 171514
+    },
+    {
+      "step": 9,
+      "label": "ZIP boundary match",
+      "before": 171514,
+      "after": 170720
+    },
+    {
+      "step": 10,
+      "label": "approximate dog identities",
+      "before": 170720,
+      "after": 111023
+    },
+    {
+      "step": 11,
+      "label": "supported recorded gender values",
+      "before": 111023,
+      "after": 111023
+    },
+    {
+      "step": 12,
+      "label": "year + ZIP + recorded gender + name aggregation",
+      "before": 111023,
+      "after": 98839,
+      "compact_rows": 97185
+    }
+  ],
+  "excluded_examples": {
+    "exact_duplicates": [
+      {
+        "AnimalName": "WHISKEY",
+        "AnimalGender": "F",
+        "AnimalBirthYear": "2017",
+        "BreedName": "Lagotto Romagnolo",
+        "ZipCode": 10065.0,
+        "LicenseIssuedDate": "06/22/2019",
+        "LicenseExpiredDate": "07/09/2025",
+        "Extract Year": 2026
+      },
+      {
+        "AnimalName": "ROMEO",
+        "AnimalGender": "M",
+        "AnimalBirthYear": "2010",
+        "BreedName": "Shih Tzu",
+        "ZipCode": 10306.0,
+        "LicenseIssuedDate": "01/06/2020",
+        "LicenseExpiredDate": "01/21/2025",
+        "Extract Year": 2026
+      },
+      {
+        "AnimalName": "YOSHI",
+        "AnimalGender": "M",
+        "AnimalBirthYear": "2018",
+        "BreedName": "Pembroke Welsh Corgi",
+        "ZipCode": 11214.0,
+        "LicenseIssuedDate": "01/16/2020",
+        "LicenseExpiredDate": "01/16/2025",
+        "Extract Year": 2026
+      },
+      {
+        "AnimalName": "CHICA",
+        "AnimalGender": "F",
+        "AnimalBirthYear": "2013",
+        "BreedName": "Rat Terrier",
+        "ZipCode": 10038.0,
+        "LicenseIssuedDate": "01/17/2020",
+        "LicenseExpiredDate": "01/17/2025",
+        "Extract Year": 2026
+      },
+      {
+        "AnimalName": "OLLIE",
+        "AnimalGender": "M",
+        "AnimalBirthYear": "2018",
+        "BreedName": "Australian Shepherd",
+        "ZipCode": 10036.0,
+        "LicenseIssuedDate": "01/18/2020",
+        "LicenseExpiredDate": "01/18/2025",
+        "Extract Year": 2026
+      },
+      {
+        "AnimalName": "OLIVER",
+        "AnimalGender": "M",
+        "AnimalBirthYear": "2018",
+        "BreedName": "Maltipoo",
+        "ZipCode": 11223.0,
+        "LicenseIssuedDate": "02/09/2020",
+        "LicenseExpiredDate": "03/11/2025",
+        "Extract Year": 2026
+      },
+      {
+        "AnimalName": "LEIA",
+        "AnimalGender": "F",
+        "AnimalBirthYear": "2015",
+        "BreedName": "Chihuahua",
+        "ZipCode": 10030.0,
+        "LicenseIssuedDate": "02/12/2020",
+        "LicenseExpiredDate": "03/23/2025",
+        "Extract Year": 2026
+      },
+      {
+        "AnimalName": "CHAOS",
+        "AnimalGender": "M",
+        "AnimalBirthYear": "2019",
+        "BreedName": "Bullmastiff",
+        "ZipCode": 10471.0,
+        "LicenseIssuedDate": "02/21/2020",
+        "LicenseExpiredDate": "02/21/2025",
+        "Extract Year": 2026
+      }
+    ],
+    "repeated_license_periods": [
+      {
+        "AnimalName": "BRUNO",
+        "AnimalGender": "M",
+        "AnimalBirthYear": "2015",
+        "BreedName": "American Pit Bull Terrier/Pit Bull",
+        "ZipCode": 11234.0,
+        "LicenseIssuedDate": "12/05/2017",
+        "LicenseExpiredDate": "11/01/2027",
+        "Extract Year": 2017
+      },
+      {
+        "AnimalName": "ARTEMIS",
+        "AnimalGender": "F",
+        "AnimalBirthYear": "2015",
+        "BreedName": "Shiba Inu",
+        "ZipCode": 11201.0,
+        "LicenseIssuedDate": "02/19/2018",
+        "LicenseExpiredDate": "05/19/2027",
+        "Extract Year": 2018
+      },
+      {
+        "AnimalName": "SOL",
+        "AnimalGender": "M",
+        "AnimalBirthYear": "2016",
+        "BreedName": "Poodle, Toy",
+        "ZipCode": 11104.0,
+        "LicenseIssuedDate": "03/11/2018",
+        "LicenseExpiredDate": "03/07/2028",
+        "Extract Year": 2018
+      },
+      {
+        "AnimalName": "FU",
+        "AnimalGender": "M",
+        "AnimalBirthYear": "2015",
+        "BreedName": "Puggle",
+        "ZipCode": 10021.0,
+        "LicenseIssuedDate": "05/17/2018",
+        "LicenseExpiredDate": "02/17/2028",
+        "Extract Year": 2018
+      },
+      {
+        "AnimalName": "MILO",
+        "AnimalGender": "M",
+        "AnimalBirthYear": "2010",
+        "BreedName": "Labrador Retriever",
+        "ZipCode": 11230.0,
+        "LicenseIssuedDate": "06/02/2018",
+        "LicenseExpiredDate": "04/06/2026",
+        "Extract Year": 2018
+      },
+      {
+        "AnimalName": "LOLLIPOP",
+        "AnimalGender": "F",
+        "AnimalBirthYear": "2014",
+        "BreedName": "Bull Dog, English",
+        "ZipCode": 10026.0,
+        "LicenseIssuedDate": "08/29/2018",
+        "LicenseExpiredDate": "08/24/2025",
+        "Extract Year": 2018
+      },
+      {
+        "AnimalName": "DAPHNE",
+        "AnimalGender": "F",
+        "AnimalBirthYear": "2009",
+        "BreedName": "Labrador Retriever",
+        "ZipCode": 11205.0,
+        "LicenseIssuedDate": "09/19/2018",
+        "LicenseExpiredDate": "01/24/2028",
+        "Extract Year": 2018
+      },
+      {
+        "AnimalName": "JAMAICA",
+        "AnimalGender": "F",
+        "AnimalBirthYear": "2009",
+        "BreedName": "Golden Retriever",
+        "ZipCode": 10021.0,
+        "LicenseIssuedDate": "10/09/2018",
+        "LicenseExpiredDate": "03/13/2028",
+        "Extract Year": 2018
+      }
+    ],
+    "missing_or_placeholder_names": [
+      {
+        "AnimalName": "NAME NOT PROVIDED",
+        "AnimalBirthYear": "2011",
+        "ZipCode": 10461.0
+      },
+      {
+        "AnimalName": "NAME NOT PROVIDED",
+        "AnimalBirthYear": "2013",
+        "ZipCode": 11432.0
+      },
+      {
+        "AnimalName": "UNKNOWN",
+        "AnimalBirthYear": "2014",
+        "ZipCode": 11226.0
+      },
+      {
+        "AnimalName": "NAME NOT PROVIDED",
+        "AnimalBirthYear": "2014",
+        "ZipCode": 11222.0
+      },
+      {
+        "AnimalName": "NAME NOT PROVIDED",
+        "AnimalBirthYear": "2011",
+        "ZipCode": 11428.0
+      },
+      {
+        "AnimalName": "UNKNOWN",
+        "AnimalBirthYear": "2013",
+        "ZipCode": 11214.0
+      },
+      {
+        "AnimalName": "NAME NOT PROVIDED",
+        "AnimalBirthYear": "2012",
+        "ZipCode": 11214.0
+      },
+      {
+        "AnimalName": "NAME NOT PROVIDED",
+        "AnimalBirthYear": "2013",
+        "ZipCode": 11105.0
+      }
+    ],
+    "invalid_birth_years": [
+      {
+        "AnimalName": "SEUL",
+        "AnimalBirthYear": "18",
+        "ZipCode": 11358.0
+      },
+      {
+        "AnimalName": "OSITO",
+        "AnimalBirthYear": "317",
+        "ZipCode": 11419.0
+      },
+      {
+        "AnimalName": "CREAM",
+        "AnimalBirthYear": "720",
+        "ZipCode": 10282.0
+      },
+      {
+        "AnimalName": "DIESEL",
+        "AnimalBirthYear": "200",
+        "ZipCode": 11249.0
+      },
+      {
+        "AnimalName": "MAGGIE",
+        "AnimalBirthYear": "21",
+        "ZipCode": 10028.0
+      },
+      {
+        "AnimalName": "BETTY",
+        "AnimalBirthYear": "221",
+        "ZipCode": 11231.0
+      },
+      {
+        "AnimalName": "CASHMERE",
+        "AnimalBirthYear": "519",
+        "ZipCode": 10463.0
+      },
+      {
+        "AnimalName": "BOBO",
+        "AnimalBirthYear": "202",
+        "ZipCode": 10016.0
+      }
+    ],
+    "outside_seed_window": [
+      {
+        "AnimalName": "PAIGE",
+        "AnimalBirthYear": "2014",
+        "ZipCode": 10035.0
+      },
+      {
+        "AnimalName": "YOGI",
+        "AnimalBirthYear": "2010",
+        "ZipCode": 10465.0
+      },
+      {
+        "AnimalName": "ALI",
+        "AnimalBirthYear": "2014",
+        "ZipCode": 10013.0
+      },
+      {
+        "AnimalName": "QUEEN",
+        "AnimalBirthYear": "2013",
+        "ZipCode": 10013.0
+      },
+      {
+        "AnimalName": "LOLA",
+        "AnimalBirthYear": "2009",
+        "ZipCode": 10028.0
+      },
+      {
+        "AnimalName": "IAN",
+        "AnimalBirthYear": "2006",
+        "ZipCode": 10013.0
+      },
+      {
+        "AnimalName": "BUDDY",
+        "AnimalBirthYear": "2008",
+        "ZipCode": 10025.0
+      },
+      {
+        "AnimalName": "CHEWBACCA",
+        "AnimalBirthYear": "2012",
+        "ZipCode": 10013.0
+      }
+    ],
+    "invalid_zip_codes": [
+      {
+        "AnimalName": "TIGER",
+        "AnimalBirthYear": "2018",
+        "ZipCode": 923.0
+      },
+      {
+        "AnimalName": "DELTA",
+        "AnimalBirthYear": "2019",
+        "ZipCode": 3833.0
+      },
+      {
+        "AnimalName": "BAMBI",
+        "AnimalBirthYear": "2021",
+        "ZipCode": 7624.0
+      },
+      {
+        "AnimalName": "JACKJACK",
+        "AnimalBirthYear": "2018",
+        "ZipCode": 7302.0
+      },
+      {
+        "AnimalName": "BISCUIT",
+        "AnimalBirthYear": "2018",
+        "ZipCode": 7747.0
+      },
+      {
+        "AnimalName": "HAPPY",
+        "AnimalBirthYear": "2018",
+        "ZipCode": 6793.0
+      },
+      {
+        "AnimalName": "RUTHIE",
+        "AnimalBirthYear": "2018",
+        "ZipCode": 6793.0
+      },
+      {
+        "AnimalName": "DING",
+        "AnimalBirthYear": "2021",
+        "ZipCode": 7302.0
+      }
+    ],
+    "zip_not_in_boundary_file": [
+      {
+        "AnimalName": "RILEY",
+        "AnimalBirthYear": "2019",
+        "ZipCode": 11596.0
+      },
+      {
+        "AnimalName": "LADY",
+        "AnimalBirthYear": "2019",
+        "ZipCode": 14905.0
+      },
+      {
+        "AnimalName": "MIA",
+        "AnimalBirthYear": "2019",
+        "ZipCode": 11757.0
+      },
+      {
+        "AnimalName": "JELLY",
+        "AnimalBirthYear": "2018",
+        "ZipCode": 10708.0
+      },
+      {
+        "AnimalName": "FANCY",
+        "AnimalBirthYear": "2019",
+        "ZipCode": 10933.0
+      },
+      {
+        "AnimalName": "CHARLIE",
+        "AnimalBirthYear": "2019",
+        "ZipCode": 11756.0
+      },
+      {
+        "AnimalName": "LOUIS",
+        "AnimalBirthYear": "2020",
+        "ZipCode": 10150.0
+      },
+      {
+        "AnimalName": "KERMIT",
+        "AnimalBirthYear": "2020",
+        "ZipCode": 12590.0
+      }
+    ],
+    "missing_or_unsupported_gender": []
+  },
+  "input": {
+    "dog_rows": 819323,
+    "dog_columns": [
+      "AnimalName",
+      "AnimalGender",
+      "AnimalBirthYear",
+      "BreedName",
+      "ZipCode",
+      "LicenseIssuedDate",
+      "LicenseExpiredDate",
+      "Extract Year"
+    ],
+    "zcta_features": 221,
+    "zcta_crs": "EPSG:4326",
+    "nta_features": 262,
+    "nta_crs": "EPSG:4326",
+    "dog_sample": [
+      {
+        "AnimalName": "PAIGE",
+        "AnimalGender": "F",
+        "AnimalBirthYear": "2014",
+        "BreedName": "American Pit Bull Mix / Pit Bull Mix",
+        "ZipCode": 10035.0,
+        "LicenseIssuedDate": "09/12/2014",
+        "LicenseExpiredDate": "09/12/2017",
+        "Extract Year": 2016
+      },
+      {
+        "AnimalName": "YOGI",
+        "AnimalGender": "M",
+        "AnimalBirthYear": "2010",
+        "BreedName": "Boxer",
+        "ZipCode": 10465.0,
+        "LicenseIssuedDate": "09/12/2014",
+        "LicenseExpiredDate": "10/02/2017",
+        "Extract Year": 2016
+      },
+      {
+        "AnimalName": "ALI",
+        "AnimalGender": "M",
+        "AnimalBirthYear": "2014",
+        "BreedName": "Basenji",
+        "ZipCode": 10013.0,
+        "LicenseIssuedDate": "09/12/2014",
+        "LicenseExpiredDate": "09/12/2019",
+        "Extract Year": 2016
+      },
+      {
+        "AnimalName": "QUEEN",
+        "AnimalGender": "F",
+        "AnimalBirthYear": "2013",
+        "BreedName": "Akita Crossbreed",
+        "ZipCode": 10013.0,
+        "LicenseIssuedDate": "09/12/2014",
+        "LicenseExpiredDate": "09/12/2017",
+        "Extract Year": 2016
+      },
+      {
+        "AnimalName": "LOLA",
+        "AnimalGender": "F",
+        "AnimalBirthYear": "2009",
+        "BreedName": "Maltese",
+        "ZipCode": 10028.0,
+        "LicenseIssuedDate": "09/12/2014",
+        "LicenseExpiredDate": "10/09/2017",
+        "Extract Year": 2016
+      },
+      {
+        "AnimalName": "IAN",
+        "AnimalGender": "M",
+        "AnimalBirthYear": "2006",
+        "BreedName": "Unknown",
+        "ZipCode": 10013.0,
+        "LicenseIssuedDate": "09/12/2014",
+        "LicenseExpiredDate": "10/30/2019",
+        "Extract Year": 2016
+      },
+      {
+        "AnimalName": "BUDDY",
+        "AnimalGender": "M",
+        "AnimalBirthYear": "2008",
+        "BreedName": "Unknown",
+        "ZipCode": 10025.0,
+        "LicenseIssuedDate": "09/12/2014",
+        "LicenseExpiredDate": "10/20/2017",
+        "Extract Year": 2016
+      },
+      {
+        "AnimalName": "CHEWBACCA",
+        "AnimalGender": "F",
+        "AnimalBirthYear": "2012",
+        "BreedName": "Labrador Retriever Crossbreed",
+        "ZipCode": 10013.0,
+        "LicenseIssuedDate": "09/12/2014",
+        "LicenseExpiredDate": "10/01/2019",
+        "Extract Year": 2016
+      }
+    ]
+  },
+  "placeholder_counts": {
+    "UNKNOWN": 15374,
+    "NAME NOT PROVIDED": 7716,
+    "NAME": 2421,
+    "<MISSING>": 1529,
+    "NONE": 1517,
+    "NONAME": 39,
+    "NAN": 12,
+    "UNKNOWNMOR": 2,
+    "NO NAME": 1,
+    "UNKNOWNSHIBA": 1,
+    "UNKNOWNN": 1,
+    "UNKNOWNNMINI": 1,
+    "UNKNOWNALA": 1,
+    "UNKNOWNSHIH": 1,
+    "UNKNOWNMS": 1,
+    "UNKNOWNCOCK": 1
+  },
+  "unmatched_zip_counts": {
+    "10701": 28,
+    "11003": 24,
+    "11572": 17,
+    "10710": 17,
+    "10150": 13,
+    "11581": 12,
+    "10801": 10,
+    "11590": 10,
+    "10601": 9,
+    "11758": 9,
+    "11518": 9,
+    "10008": 9,
+    "10703": 9,
+    "11756": 8,
+    "11706": 8,
+    "11714": 7,
+    "10992": 7,
+    "11337": 7,
+    "11566": 7,
+    "11026": 7,
+    "10956": 6,
+    "10940": 6,
+    "10573": 6,
+    "10041": 6,
+    "10541": 6,
+    "11725": 6,
+    "10605": 6,
+    "11501": 6,
+    "10708": 6,
+    "11791": 5,
+    "11570": 5,
+    "12603": 5,
+    "11050": 5,
+    "10901": 5,
+    "11747": 5,
+    "11550": 5,
+    "11950": 5,
+    "11798": 5,
+    "11202": 5,
+    "11243": 5,
+    "11746": 5,
+    "10512": 5,
+    "11561": 5,
+    "11575": 5,
+    "11757": 5,
+    "10108": 4,
+    "10603": 4,
+    "11530": 4,
+    "11010": 4,
+    "11552": 4,
+    "10159": 4,
+    "11797": 4,
+    "11563": 4,
+    "11023": 4,
+    "10990": 4,
+    "11553": 4,
+    "12550": 4,
+    "12590": 4,
+    "10185": 4,
+    "11030": 4,
+    "10553": 3,
+    "11341": 3,
+    "10552": 3,
+    "11453": 3,
+    "11386": 3,
+    "10706": 3,
+    "10566": 3,
+    "11510": 3,
+    "12589": 3,
+    "11554": 3,
+    "10930": 3,
+    "11598": 3,
+    "11968": 3,
+    "11123": 3,
+    "12601": 3,
+    "11803": 3,
+    "11793": 3,
+    "18466": 3,
+    "13363": 3,
+    "14901": 3,
+    "11431": 3,
+    "11717": 3,
+    "10927": 3,
+    "11771": 3,
+    "10926": 3,
+    "11722": 3,
+    "11545": 3,
+    "10980": 3,
+    "10606": 3,
+    "11738": 3,
+    "13905": 2,
+    "11520": 2,
+    "11801": 2,
+    "10984": 2,
+    "11461": 2,
+    "11690": 2,
+    "10276": 2,
+    "11967": 2,
+    "80233": 2,
+    "12549": 2,
+    "11576": 2,
+    "10577": 2,
+    "33496": 2,
+    "63108": 2,
+    "11946": 2,
+    "10965": 2,
+    "11542": 2,
+    "11763": 2,
+    "11726": 2,
+    "12553": 2,
+    "19044": 2,
+    "10954": 2,
+    "10333": 2,
+    "11713": 2,
+    "12043": 2,
+    "32925": 2,
+    "10918": 2,
+    "10598": 2,
+    "11425": 2,
+    "14615": 2,
+    "11596": 2,
+    "16428": 2,
+    "12458": 2,
+    "10970": 2,
+    "10707": 2,
+    "11701": 2,
+    "10917": 2,
+    "11779": 2,
+    "12524": 2,
+    "55346": 2,
+    "10126": 2,
+    "95926": 2,
+    "12528": 2,
+    "12866": 2,
+    "10562": 2,
+    "30052": 2,
+    "11710": 2,
+    "10538": 2,
+    "12569": 2,
+    "12303": 2,
+    "14620": 2,
+    "14850": 2,
+    "10163": 2,
+    "11765": 2,
+    "10315": 2,
+    "14467": 1,
+    "10101": 1,
+    "10422": 1,
+    "20748": 1,
+    "10530": 1,
+    "11298": 1,
+    "11977": 1,
+    "11957": 1,
+    "11108": 1,
+    "11729": 1,
+    "10989": 1,
+    "50111": 1,
+    "34984": 1,
+    "11727": 1,
+    "11768": 1,
+    "14031": 1,
+    "11256": 1,
+    "11778": 1,
+    "14210": 1,
+    "50208": 1,
+    "32601": 1,
+    "28203": 1,
+    "12020": 1,
+    "10993": 1,
+    "11904": 1,
+    "10962": 1,
+    "12204": 1,
+    "83815": 1,
+    "45402": 1,
+    "89117": 1,
+    "30252": 1,
+    "19125": 1,
+    "11750": 1,
+    "10113": 1,
+    "90065": 1,
+    "18224": 1,
+    "48428": 1,
+    "76262": 1,
+    "18321": 1,
+    "14612": 1,
+    "11346": 1,
+    "11638": 1,
+    "11516": 1,
+    "11024": 1,
+    "12207": 1,
+    "11096": 1,
+    "11560": 1,
+    "12522": 1,
+    "11582": 1,
+    "10048": 1,
+    "13502": 1,
+    "11315": 1,
+    "11548": 1,
+    "11016": 1,
+    "33414": 1,
+    "11350": 1,
+    "32822": 1,
+    "11955": 1,
+    "92037": 1,
+    "12309": 1,
+    "46033": 1,
+    "16214": 1,
+    "11247": 1,
+    "11122": 1,
+    "12534": 1,
+    "11342": 1,
+    "10373": 1,
+    "11007": 1,
+    "78660": 1,
+    "12586": 1,
+    "10050": 1,
+    "68508": 1,
+    "95831": 1,
+    "10589": 1,
+    "34759": 1,
+    "10179": 1,
+    "10805": 1,
+    "14903": 1,
+    "11565": 1,
+    "11027": 1,
+    "11921": 1,
+    "10983": 1,
+    "11735": 1,
+    "12413": 1,
+    "10583": 1,
+    "16801": 1,
+    "78759": 1,
+    "10520": 1,
+    "10590": 1,
+    "11316": 1,
+    "80209": 1,
+    "32084": 1,
+    "11787": 1,
+    "11695": 1,
+    "90210": 1,
+    "13425": 1,
+    "11507": 1,
+    "10176": 1,
+    "15701": 1,
+    "11965": 1,
+    "10045": 1,
+    "11313": 1,
+    "10116": 1,
+    "11790": 1,
+    "10528": 1,
+    "12701": 1,
+    "11347": 1,
+    "12169": 1,
+    "15017": 1,
+    "10580": 1,
+    "33160": 1,
+    "14905": 1,
+    "10933": 1,
+    "11951": 1,
+    "12188": 1,
+    "10579": 1,
+    "10607": 1,
+    "32259": 1,
+    "10960": 1,
+    "11577": 1,
+    "10987": 1,
+    "14564": 1,
+    "10105": 1,
+    "34758": 1,
+    "10268": 1,
+    "12078": 1,
+    "10549": 1,
+    "10501": 1,
+    "10928": 1,
+    "33428": 1,
+    "19146": 1,
+    "33706": 1,
+    "13790": 1,
+    "12771": 1,
+    "13856": 1,
+    "13637": 1,
+    "14803": 1,
+    "31313": 1,
+    "13815": 1,
+    "11559": 1,
+    "10950": 1,
+    "11578": 1,
+    "14532": 1,
+    "11352": 1,
+    "10591": 1,
+    "10925": 1,
+    "17402": 1,
+    "11703": 1,
+    "12010": 1,
+    "13045": 1,
+    "12306": 1,
+    "27597": 1,
+    "10151": 1,
+    "11437": 1,
+    "10217": 1,
+    "11741": 1,
+    "11353": 1,
+    "13370": 1,
+    "98433": 1,
+    "10576": 1,
+    "13903": 1,
+    "12401": 1,
+    "84116": 1,
+    "60564": 1,
+    "11731": 1,
+    "11345": 1,
+    "11558": 1,
+    "13357": 1,
+    "21229": 1,
+    "10476": 1,
+    "94403": 1,
+    "48310": 1,
+    "10506": 1
+  },
+  "approximate_identity": {
+    "fields": [
+      "_name",
+      "_gender",
+      "_birth_year",
+      "_breed",
+      "_zip"
+    ],
+    "repeated_groups": 32532,
+    "rows_in_repeated_groups": 92229,
+    "largest_groups": [
+      {
+        "name": "HAVANESE",
+        "gender": "M",
+        "birth_year": 2020,
+        "breed": "HAVANESE",
+        "zip": "10312",
+        "license_period_rows": 12
+      },
+      {
+        "name": "LUCKY",
+        "gender": "M",
+        "birth_year": 2019,
+        "breed": "MALTESE",
+        "zip": "11229",
+        "license_period_rows": 12
+      },
+      {
+        "name": "PENNY",
+        "gender": "F",
+        "birth_year": 2020,
+        "breed": "GOLDENDOODLE",
+        "zip": "11361",
+        "license_period_rows": 11
+      },
+      {
+        "name": "SAMSON",
+        "gender": "M",
+        "birth_year": 2018,
+        "breed": "LABRADOR RETRIEVER",
+        "zip": "10306",
+        "license_period_rows": 11
+      },
+      {
+        "name": "HAVANESE",
+        "gender": "M",
+        "birth_year": 2021,
+        "breed": "HAVANESE",
+        "zip": "10314",
+        "license_period_rows": 10
+      },
+      {
+        "name": "MORKIE",
+        "gender": "F",
+        "birth_year": 2020,
+        "breed": "MALTESE CROSSBREED",
+        "zip": "10308",
+        "license_period_rows": 10
+      },
+      {
+        "name": "TOBY",
+        "gender": "M",
+        "birth_year": 2018,
+        "breed": "BEAGLE",
+        "zip": "11385",
+        "license_period_rows": 9
+      },
+      {
+        "name": "BELLA",
+        "gender": "F",
+        "birth_year": 2019,
+        "breed": "YORKSHIRE TERRIER",
+        "zip": "10029",
+        "license_period_rows": 9
+      },
+      {
+        "name": "MORKIE",
+        "gender": "M",
+        "birth_year": 2022,
+        "breed": "MORKIE",
+        "zip": "10308",
+        "license_period_rows": 9
+      },
+      {
+        "name": "TORO",
+        "gender": "M",
+        "birth_year": 2018,
+        "breed": "GOLDEN RETRIEVER",
+        "zip": "10024",
+        "license_period_rows": 8
+      },
+      {
+        "name": "RAVEN",
+        "gender": "F",
+        "birth_year": 2018,
+        "breed": "LABRADOR RETRIEVER",
+        "zip": "10310",
+        "license_period_rows": 8
+      },
+      {
+        "name": "TINKER",
+        "gender": "F",
+        "birth_year": 2018,
+        "breed": "CHIHUAHUA CROSSBREED",
+        "zip": "10314",
+        "license_period_rows": 8
+      },
+      {
+        "name": "TOBY",
+        "gender": "M",
+        "birth_year": 2018,
+        "breed": "SHIH TZU",
+        "zip": "10312",
+        "license_period_rows": 8
+      },
+      {
+        "name": "HAPPER",
+        "gender": "F",
+        "birth_year": 2018,
+        "breed": "SHIH TZU",
+        "zip": "10306",
+        "license_period_rows": 8
+      },
+      {
+        "name": "MABEL",
+        "gender": "F",
+        "birth_year": 2020,
+        "breed": "POODLE CROSSBREED",
+        "zip": "10128",
+        "license_period_rows": 8
+      },
+      {
+        "name": "TEDDY",
+        "gender": "M",
+        "birth_year": 2018,
+        "breed": "SHIH TZU CROSSBREED",
+        "zip": "11372",
+        "license_period_rows": 8
+      },
+      {
+        "name": "PRESTON",
+        "gender": "M",
+        "birth_year": 2018,
+        "breed": "BOXER",
+        "zip": "11228",
+        "license_period_rows": 8
+      },
+      {
+        "name": "COOKIE",
+        "gender": "F",
+        "birth_year": 2018,
+        "breed": "TERRIER CROSSBREED",
+        "zip": "11385",
+        "license_period_rows": 8
+      },
+      {
+        "name": "RIGO",
+        "gender": "M",
+        "birth_year": 2018,
+        "breed": "BOSTON TERRIER",
+        "zip": "10301",
+        "license_period_rows": 8
+      },
+      {
+        "name": "LUNA",
+        "gender": "F",
+        "birth_year": 2020,
+        "breed": "SHIH TZU",
+        "zip": "10462",
+        "license_period_rows": 8
+      }
+    ]
+  },
+  "gender_exclusions": {
+    "count": 0,
+    "values": {}
+  },
+  "cohort_sizes": {
+    "method": "Rounded mean approximate dogs born annually from 2018 through 2022",
+    "zip_count": 190,
+    "minimum": 1,
+    "maximum": 457,
+    "median": 99.5,
+    "total_annual_cohort": 22203,
+    "excluded_zero_cohort_zips": [
+      "10111",
+      "10115",
+      "10119",
+      "10168",
+      "10170",
+      "11020",
+      "11371",
+      "11424",
+      "11439"
+    ]
+  },
+  "gender_audit": {
+    "M": 61055,
+    "F": 49968,
+    "total": 111023,
+    "M_share": 0.5499310953586194,
+    "F_share": 0.4500689046413806,
+    "names_used_by_both_recorded_groups": 3182,
+    "shared_rule": {
+      "minimum_citywide_count": 20,
+      "minimum_M_share": 0.35,
+      "maximum_M_share": 0.65
+    },
+    "shared_names_across_2018_2022_combined": 139,
+    "shared_names_by_birth_year": {
+      "2018": 20,
+      "2019": 21,
+      "2020": 34,
+      "2021": 15,
+      "2022": 11
+    },
+    "by_zip": {
+      "10001": {
+        "M": 570,
+        "F": 437,
+        "M_share": 0.5660377358490566,
+        "F_share": 0.4339622641509434,
+        "annual_targets": {
+          "M": 114,
+          "F": 87
+        }
+      },
+      "10002": {
+        "M": 619,
+        "F": 478,
+        "M_share": 0.5642661804922516,
+        "F_share": 0.4357338195077484,
+        "annual_targets": {
+          "M": 124,
+          "F": 95
+        }
+      },
+      "10003": {
+        "M": 637,
+        "F": 552,
+        "M_share": 0.535744322960471,
+        "F_share": 0.464255677039529,
+        "annual_targets": {
+          "M": 128,
+          "F": 110
+        }
+      },
+      "10004": {
+        "M": 92,
+        "F": 75,
+        "M_share": 0.5508982035928144,
+        "F_share": 0.4491017964071856,
+        "annual_targets": {
+          "M": 18,
+          "F": 15
+        }
+      },
+      "10005": {
+        "M": 259,
+        "F": 192,
+        "M_share": 0.5742793791574279,
+        "F_share": 0.42572062084257206,
+        "annual_targets": {
+          "M": 52,
+          "F": 38
+        }
+      },
+      "10006": {
+        "M": 93,
+        "F": 57,
+        "M_share": 0.62,
+        "F_share": 0.38,
+        "annual_targets": {
+          "M": 19,
+          "F": 11
+        }
+      },
+      "10007": {
+        "M": 112,
+        "F": 85,
+        "M_share": 0.5685279187817259,
+        "F_share": 0.43147208121827413,
+        "annual_targets": {
+          "M": 22,
+          "F": 17
+        }
+      },
+      "10009": {
+        "M": 997,
+        "F": 863,
+        "M_share": 0.5360215053763441,
+        "F_share": 0.4639784946236559,
+        "annual_targets": {
+          "M": 199,
+          "F": 173
+        }
+      },
+      "10010": {
+        "M": 553,
+        "F": 517,
+        "M_share": 0.516822429906542,
+        "F_share": 0.48317757009345796,
+        "annual_targets": {
+          "M": 111,
+          "F": 103
+        }
+      },
+      "10011": {
+        "M": 893,
+        "F": 758,
+        "M_share": 0.5408843125378558,
+        "F_share": 0.45911568746214415,
+        "annual_targets": {
+          "M": 178,
+          "F": 152
+        }
+      },
+      "10012": {
+        "M": 358,
+        "F": 327,
+        "M_share": 0.5226277372262774,
+        "F_share": 0.47737226277372263,
+        "annual_targets": {
+          "M": 72,
+          "F": 65
+        }
+      },
+      "10013": {
+        "M": 324,
+        "F": 305,
+        "M_share": 0.5151033386327504,
+        "F_share": 0.4848966613672496,
+        "annual_targets": {
+          "M": 65,
+          "F": 61
+        }
+      },
+      "10014": {
+        "M": 553,
+        "F": 507,
+        "M_share": 0.5216981132075472,
+        "F_share": 0.47830188679245284,
+        "annual_targets": {
+          "M": 111,
+          "F": 101
+        }
+      },
+      "10016": {
+        "M": 816,
+        "F": 746,
+        "M_share": 0.5224071702944942,
+        "F_share": 0.47759282970550576,
+        "annual_targets": {
+          "M": 163,
+          "F": 149
+        }
+      },
+      "10017": {
+        "M": 221,
+        "F": 194,
+        "M_share": 0.5325301204819277,
+        "F_share": 0.4674698795180723,
+        "annual_targets": {
+          "M": 44,
+          "F": 39
+        }
+      },
+      "10018": {
+        "M": 302,
+        "F": 199,
+        "M_share": 0.6027944111776448,
+        "F_share": 0.3972055888223553,
+        "annual_targets": {
+          "M": 60,
+          "F": 40
+        }
+      },
+      "10019": {
+        "M": 926,
+        "F": 758,
+        "M_share": 0.5498812351543944,
+        "F_share": 0.4501187648456057,
+        "annual_targets": {
+          "M": 185,
+          "F": 152
+        }
+      },
+      "10020": {
+        "M": 3,
+        "F": 3,
+        "M_share": 0.5,
+        "F_share": 0.5,
+        "annual_targets": {
+          "M": 1,
+          "F": 0
+        }
+      },
+      "10021": {
+        "M": 604,
+        "F": 516,
+        "M_share": 0.5392857142857143,
+        "F_share": 0.4607142857142857,
+        "annual_targets": {
+          "M": 121,
+          "F": 103
+        }
+      },
+      "10022": {
+        "M": 416,
+        "F": 394,
+        "M_share": 0.5135802469135803,
+        "F_share": 0.48641975308641977,
+        "annual_targets": {
+          "M": 83,
+          "F": 79
+        }
+      },
+      "10023": {
+        "M": 918,
+        "F": 917,
+        "M_share": 0.5002724795640326,
+        "F_share": 0.4997275204359673,
+        "annual_targets": {
+          "M": 184,
+          "F": 183
+        }
+      },
+      "10024": {
+        "M": 796,
+        "F": 780,
+        "M_share": 0.5050761421319797,
+        "F_share": 0.4949238578680203,
+        "annual_targets": {
+          "M": 159,
+          "F": 156
+        }
+      },
+      "10025": {
+        "M": 1065,
+        "F": 1053,
+        "M_share": 0.5028328611898017,
+        "F_share": 0.4971671388101983,
+        "annual_targets": {
+          "M": 213,
+          "F": 211
+        }
+      },
+      "10026": {
+        "M": 353,
+        "F": 273,
+        "M_share": 0.5638977635782748,
+        "F_share": 0.43610223642172524,
+        "annual_targets": {
+          "M": 70,
+          "F": 55
+        }
+      },
+      "10027": {
+        "M": 447,
+        "F": 445,
+        "M_share": 0.5011210762331838,
+        "F_share": 0.49887892376681614,
+        "annual_targets": {
+          "M": 89,
+          "F": 89
+        }
+      },
+      "10028": {
+        "M": 751,
+        "F": 641,
+        "M_share": 0.5395114942528736,
+        "F_share": 0.46048850574712646,
+        "annual_targets": {
+          "M": 150,
+          "F": 128
+        }
+      },
+      "10029": {
+        "M": 696,
+        "F": 607,
+        "M_share": 0.5341519570222564,
+        "F_share": 0.4658480429777437,
+        "annual_targets": {
+          "M": 139,
+          "F": 122
+        }
+      },
+      "10030": {
+        "M": 186,
+        "F": 158,
+        "M_share": 0.5406976744186046,
+        "F_share": 0.45930232558139533,
+        "annual_targets": {
+          "M": 37,
+          "F": 32
+        }
+      },
+      "10031": {
+        "M": 421,
+        "F": 319,
+        "M_share": 0.5689189189189189,
+        "F_share": 0.43108108108108106,
+        "annual_targets": {
+          "M": 84,
+          "F": 64
+        }
+      },
+      "10032": {
+        "M": 377,
+        "F": 325,
+        "M_share": 0.5370370370370371,
+        "F_share": 0.46296296296296297,
+        "annual_targets": {
+          "M": 75,
+          "F": 65
+        }
+      },
+      "10033": {
+        "M": 314,
+        "F": 277,
+        "M_share": 0.5313028764805414,
+        "F_share": 0.4686971235194585,
+        "annual_targets": {
+          "M": 63,
+          "F": 55
+        }
+      },
+      "10034": {
+        "M": 266,
+        "F": 237,
+        "M_share": 0.5288270377733598,
+        "F_share": 0.4711729622266402,
+        "annual_targets": {
+          "M": 53,
+          "F": 48
+        }
+      },
+      "10035": {
+        "M": 262,
+        "F": 246,
+        "M_share": 0.515748031496063,
+        "F_share": 0.484251968503937,
+        "annual_targets": {
+          "M": 53,
+          "F": 49
+        }
+      },
+      "10036": {
+        "M": 612,
+        "F": 456,
+        "M_share": 0.5730337078651685,
+        "F_share": 0.42696629213483145,
+        "annual_targets": {
+          "M": 123,
+          "F": 91
+        }
+      },
+      "10037": {
+        "M": 169,
+        "F": 136,
+        "M_share": 0.5540983606557377,
+        "F_share": 0.4459016393442623,
+        "annual_targets": {
+          "M": 34,
+          "F": 27
+        }
+      },
+      "10038": {
+        "M": 396,
+        "F": 306,
+        "M_share": 0.5641025641025641,
+        "F_share": 0.4358974358974359,
+        "annual_targets": {
+          "M": 79,
+          "F": 61
+        }
+      },
+      "10039": {
+        "M": 180,
+        "F": 140,
+        "M_share": 0.5625,
+        "F_share": 0.4375,
+        "annual_targets": {
+          "M": 36,
+          "F": 28
+        }
+      },
+      "10040": {
+        "M": 280,
+        "F": 196,
+        "M_share": 0.5882352941176471,
+        "F_share": 0.4117647058823529,
+        "annual_targets": {
+          "M": 56,
+          "F": 39
+        }
+      },
+      "10044": {
+        "M": 114,
+        "F": 115,
+        "M_share": 0.4978165938864629,
+        "F_share": 0.5021834061135371,
+        "annual_targets": {
+          "M": 23,
+          "F": 23
+        }
+      },
+      "10065": {
+        "M": 443,
+        "F": 346,
+        "M_share": 0.5614702154626109,
+        "F_share": 0.4385297845373891,
+        "annual_targets": {
+          "M": 89,
+          "F": 69
+        }
+      },
+      "10069": {
+        "M": 135,
+        "F": 124,
+        "M_share": 0.5212355212355212,
+        "F_share": 0.47876447876447875,
+        "annual_targets": {
+          "M": 27,
+          "F": 25
+        }
+      },
+      "10075": {
+        "M": 381,
+        "F": 368,
+        "M_share": 0.5086782376502003,
+        "F_share": 0.49132176234979974,
+        "annual_targets": {
+          "M": 76,
+          "F": 74
+        }
+      },
+      "10111": {
+        "M": 0,
+        "F": 1,
+        "M_share": 0.0,
+        "F_share": 1.0,
+        "annual_targets": {
+          "M": 0,
+          "F": 0
+        }
+      },
+      "10115": {
+        "M": 0,
+        "F": 1,
+        "M_share": 0.0,
+        "F_share": 1.0,
+        "annual_targets": {
+          "M": 0,
+          "F": 0
+        }
+      },
+      "10119": {
+        "M": 0,
+        "F": 1,
+        "M_share": 0.0,
+        "F_share": 1.0,
+        "annual_targets": {
+          "M": 0,
+          "F": 0
+        }
+      },
+      "10128": {
+        "M": 909,
+        "F": 808,
+        "M_share": 0.5294117647058824,
+        "F_share": 0.47058823529411764,
+        "annual_targets": {
+          "M": 182,
+          "F": 161
+        }
+      },
+      "10162": {
+        "M": 23,
+        "F": 17,
+        "M_share": 0.575,
+        "F_share": 0.425,
+        "annual_targets": {
+          "M": 5,
+          "F": 3
+        }
+      },
+      "10168": {
+        "M": 0,
+        "F": 1,
+        "M_share": 0.0,
+        "F_share": 1.0,
+        "annual_targets": {
+          "M": 0,
+          "F": 0
+        }
+      },
+      "10170": {
+        "M": 0,
+        "F": 1,
+        "M_share": 0.0,
+        "F_share": 1.0,
+        "annual_targets": {
+          "M": 0,
+          "F": 0
+        }
+      },
+      "10280": {
+        "M": 145,
+        "F": 113,
+        "M_share": 0.562015503875969,
+        "F_share": 0.437984496124031,
+        "annual_targets": {
+          "M": 29,
+          "F": 23
+        }
+      },
+      "10282": {
+        "M": 87,
+        "F": 58,
+        "M_share": 0.6,
+        "F_share": 0.4,
+        "annual_targets": {
+          "M": 17,
+          "F": 12
+        }
+      },
+      "10301": {
+        "M": 274,
+        "F": 204,
+        "M_share": 0.5732217573221757,
+        "F_share": 0.42677824267782427,
+        "annual_targets": {
+          "M": 55,
+          "F": 41
+        }
+      },
+      "10302": {
+        "M": 128,
+        "F": 95,
+        "M_share": 0.5739910313901345,
+        "F_share": 0.4260089686098655,
+        "annual_targets": {
+          "M": 26,
+          "F": 19
+        }
+      },
+      "10303": {
+        "M": 170,
+        "F": 124,
+        "M_share": 0.5782312925170068,
+        "F_share": 0.4217687074829932,
+        "annual_targets": {
+          "M": 34,
+          "F": 25
+        }
+      },
+      "10304": {
+        "M": 313,
+        "F": 238,
+        "M_share": 0.5680580762250453,
+        "F_share": 0.4319419237749546,
+        "annual_targets": {
+          "M": 62,
+          "F": 48
+        }
+      },
+      "10305": {
+        "M": 332,
+        "F": 239,
+        "M_share": 0.5814360770577933,
+        "F_share": 0.4185639229422067,
+        "annual_targets": {
+          "M": 66,
+          "F": 48
+        }
+      },
+      "10306": {
+        "M": 448,
+        "F": 369,
+        "M_share": 0.5483476132190942,
+        "F_share": 0.45165238678090575,
+        "annual_targets": {
+          "M": 89,
+          "F": 74
+        }
+      },
+      "10307": {
+        "M": 132,
+        "F": 123,
+        "M_share": 0.5176470588235295,
+        "F_share": 0.4823529411764706,
+        "annual_targets": {
+          "M": 26,
+          "F": 25
+        }
+      },
+      "10308": {
+        "M": 273,
+        "F": 193,
+        "M_share": 0.5858369098712446,
+        "F_share": 0.41416309012875535,
+        "annual_targets": {
+          "M": 54,
+          "F": 39
+        }
+      },
+      "10309": {
+        "M": 318,
+        "F": 260,
+        "M_share": 0.5501730103806228,
+        "F_share": 0.44982698961937717,
+        "annual_targets": {
+          "M": 64,
+          "F": 52
+        }
+      },
+      "10310": {
+        "M": 175,
+        "F": 143,
+        "M_share": 0.550314465408805,
+        "F_share": 0.449685534591195,
+        "annual_targets": {
+          "M": 35,
+          "F": 29
+        }
+      },
+      "10312": {
+        "M": 573,
+        "F": 485,
+        "M_share": 0.5415879017013232,
+        "F_share": 0.45841209829867674,
+        "annual_targets": {
+          "M": 115,
+          "F": 97
+        }
+      },
+      "10314": {
+        "M": 552,
+        "F": 464,
+        "M_share": 0.5433070866141733,
+        "F_share": 0.4566929133858268,
+        "annual_targets": {
+          "M": 110,
+          "F": 93
+        }
+      },
+      "10451": {
+        "M": 310,
+        "F": 232,
+        "M_share": 0.5719557195571956,
+        "F_share": 0.4280442804428044,
+        "annual_targets": {
+          "M": 62,
+          "F": 46
+        }
+      },
+      "10452": {
+        "M": 287,
+        "F": 209,
+        "M_share": 0.5786290322580645,
+        "F_share": 0.4213709677419355,
+        "annual_targets": {
+          "M": 57,
+          "F": 42
+        }
+      },
+      "10453": {
+        "M": 298,
+        "F": 250,
+        "M_share": 0.5437956204379562,
+        "F_share": 0.4562043795620438,
+        "annual_targets": {
+          "M": 60,
+          "F": 50
+        }
+      },
+      "10454": {
+        "M": 232,
+        "F": 161,
+        "M_share": 0.5903307888040712,
+        "F_share": 0.40966921119592875,
+        "annual_targets": {
+          "M": 47,
+          "F": 32
+        }
+      },
+      "10455": {
+        "M": 233,
+        "F": 172,
+        "M_share": 0.5753086419753086,
+        "F_share": 0.4246913580246914,
+        "annual_targets": {
+          "M": 47,
+          "F": 34
+        }
+      },
+      "10456": {
+        "M": 430,
+        "F": 311,
+        "M_share": 0.5802968960863698,
+        "F_share": 0.41970310391363025,
+        "annual_targets": {
+          "M": 86,
+          "F": 62
+        }
+      },
+      "10457": {
+        "M": 373,
+        "F": 298,
+        "M_share": 0.555886736214605,
+        "F_share": 0.44411326378539495,
+        "annual_targets": {
+          "M": 74,
+          "F": 60
+        }
+      },
+      "10458": {
+        "M": 365,
+        "F": 271,
+        "M_share": 0.5738993710691824,
+        "F_share": 0.4261006289308176,
+        "annual_targets": {
+          "M": 73,
+          "F": 54
+        }
+      },
+      "10459": {
+        "M": 280,
+        "F": 183,
+        "M_share": 0.6047516198704104,
+        "F_share": 0.3952483801295896,
+        "annual_targets": {
+          "M": 56,
+          "F": 37
+        }
+      },
+      "10460": {
+        "M": 400,
+        "F": 253,
+        "M_share": 0.6125574272588055,
+        "F_share": 0.3874425727411945,
+        "annual_targets": {
+          "M": 80,
+          "F": 51
+        }
+      },
+      "10461": {
+        "M": 428,
+        "F": 289,
+        "M_share": 0.596931659693166,
+        "F_share": 0.403068340306834,
+        "annual_targets": {
+          "M": 85,
+          "F": 58
+        }
+      },
+      "10462": {
+        "M": 545,
+        "F": 343,
+        "M_share": 0.6137387387387387,
+        "F_share": 0.38626126126126126,
+        "annual_targets": {
+          "M": 109,
+          "F": 69
+        }
+      },
+      "10463": {
+        "M": 406,
+        "F": 340,
+        "M_share": 0.5442359249329759,
+        "F_share": 0.45576407506702415,
+        "annual_targets": {
+          "M": 81,
+          "F": 68
+        }
+      },
+      "10464": {
+        "M": 43,
+        "F": 45,
+        "M_share": 0.48863636363636365,
+        "F_share": 0.5113636363636364,
+        "annual_targets": {
+          "M": 9,
+          "F": 9
+        }
+      },
+      "10465": {
+        "M": 388,
+        "F": 314,
+        "M_share": 0.5527065527065527,
+        "F_share": 0.4472934472934473,
+        "annual_targets": {
+          "M": 77,
+          "F": 63
+        }
+      },
+      "10466": {
+        "M": 254,
+        "F": 180,
+        "M_share": 0.5852534562211982,
+        "F_share": 0.4147465437788018,
+        "annual_targets": {
+          "M": 51,
+          "F": 36
+        }
+      },
+      "10467": {
+        "M": 448,
+        "F": 319,
+        "M_share": 0.5840938722294654,
+        "F_share": 0.41590612777053454,
+        "annual_targets": {
+          "M": 89,
+          "F": 64
+        }
+      },
+      "10468": {
+        "M": 303,
+        "F": 230,
+        "M_share": 0.5684803001876173,
+        "F_share": 0.43151969981238275,
+        "annual_targets": {
+          "M": 61,
+          "F": 46
+        }
+      },
+      "10469": {
+        "M": 263,
+        "F": 200,
+        "M_share": 0.5680345572354212,
+        "F_share": 0.4319654427645788,
+        "annual_targets": {
+          "M": 53,
+          "F": 40
+        }
+      },
+      "10470": {
+        "M": 82,
+        "F": 51,
+        "M_share": 0.6165413533834586,
+        "F_share": 0.38345864661654133,
+        "annual_targets": {
+          "M": 17,
+          "F": 10
+        }
+      },
+      "10471": {
+        "M": 160,
+        "F": 166,
+        "M_share": 0.49079754601226994,
+        "F_share": 0.50920245398773,
+        "annual_targets": {
+          "M": 32,
+          "F": 33
+        }
+      },
+      "10472": {
+        "M": 351,
+        "F": 216,
+        "M_share": 0.6190476190476191,
+        "F_share": 0.38095238095238093,
+        "annual_targets": {
+          "M": 70,
+          "F": 43
+        }
+      },
+      "10473": {
+        "M": 372,
+        "F": 307,
+        "M_share": 0.5478645066273933,
+        "F_share": 0.4521354933726068,
+        "annual_targets": {
+          "M": 75,
+          "F": 61
+        }
+      },
+      "10474": {
+        "M": 58,
+        "F": 31,
+        "M_share": 0.651685393258427,
+        "F_share": 0.34831460674157305,
+        "annual_targets": {
+          "M": 12,
+          "F": 6
+        }
+      },
+      "10475": {
+        "M": 188,
+        "F": 137,
+        "M_share": 0.5784615384615385,
+        "F_share": 0.42153846153846153,
+        "annual_targets": {
+          "M": 38,
+          "F": 27
+        }
+      },
+      "10550": {
+        "M": 7,
+        "F": 4,
+        "M_share": 0.6363636363636364,
+        "F_share": 0.36363636363636365,
+        "annual_targets": {
+          "M": 1,
+          "F": 1
+        }
+      },
+      "10704": {
+        "M": 11,
+        "F": 6,
+        "M_share": 0.6470588235294118,
+        "F_share": 0.35294117647058826,
+        "annual_targets": {
+          "M": 2,
+          "F": 1
+        }
+      },
+      "10705": {
+        "M": 6,
+        "F": 4,
+        "M_share": 0.6,
+        "F_share": 0.4,
+        "annual_targets": {
+          "M": 1,
+          "F": 1
+        }
+      },
+      "10803": {
+        "M": 2,
+        "F": 1,
+        "M_share": 0.6666666666666666,
+        "F_share": 0.3333333333333333,
+        "annual_targets": {
+          "M": 1,
+          "F": 0
+        }
+      },
+      "11001": {
+        "M": 15,
+        "F": 17,
+        "M_share": 0.46875,
+        "F_share": 0.53125,
+        "annual_targets": {
+          "M": 3,
+          "F": 3
+        }
+      },
+      "11004": {
+        "M": 47,
+        "F": 53,
+        "M_share": 0.47,
+        "F_share": 0.53,
+        "annual_targets": {
+          "M": 9,
+          "F": 11
+        }
+      },
+      "11005": {
+        "M": 1,
+        "F": 4,
+        "M_share": 0.2,
+        "F_share": 0.8,
+        "annual_targets": {
+          "M": 0,
+          "F": 1
+        }
+      },
+      "11020": {
+        "M": 0,
+        "F": 1,
+        "M_share": 0.0,
+        "F_share": 1.0,
+        "annual_targets": {
+          "M": 0,
+          "F": 0
+        }
+      },
+      "11021": {
+        "M": 7,
+        "F": 4,
+        "M_share": 0.6363636363636364,
+        "F_share": 0.36363636363636365,
+        "annual_targets": {
+          "M": 1,
+          "F": 1
+        }
+      },
+      "11040": {
+        "M": 14,
+        "F": 9,
+        "M_share": 0.6086956521739131,
+        "F_share": 0.391304347826087,
+        "annual_targets": {
+          "M": 3,
+          "F": 2
+        }
+      },
+      "11101": {
+        "M": 919,
+        "F": 725,
+        "M_share": 0.5590024330900243,
+        "F_share": 0.44099756690997566,
+        "annual_targets": {
+          "M": 184,
+          "F": 145
+        }
+      },
+      "11102": {
+        "M": 450,
+        "F": 410,
+        "M_share": 0.5232558139534884,
+        "F_share": 0.47674418604651164,
+        "annual_targets": {
+          "M": 90,
+          "F": 82
+        }
+      },
+      "11103": {
+        "M": 315,
+        "F": 229,
+        "M_share": 0.5790441176470589,
+        "F_share": 0.4209558823529412,
+        "annual_targets": {
+          "M": 63,
+          "F": 46
+        }
+      },
+      "11104": {
+        "M": 237,
+        "F": 201,
+        "M_share": 0.541095890410959,
+        "F_share": 0.4589041095890411,
+        "annual_targets": {
+          "M": 48,
+          "F": 40
+        }
+      },
+      "11105": {
+        "M": 301,
+        "F": 265,
+        "M_share": 0.5318021201413428,
+        "F_share": 0.46819787985865724,
+        "annual_targets": {
+          "M": 60,
+          "F": 53
+        }
+      },
+      "11106": {
+        "M": 373,
+        "F": 329,
+        "M_share": 0.5313390313390314,
+        "F_share": 0.4686609686609687,
+        "annual_targets": {
+          "M": 74,
+          "F": 66
+        }
+      },
+      "11109": {
+        "M": 155,
+        "F": 116,
+        "M_share": 0.5719557195571956,
+        "F_share": 0.4280442804428044,
+        "annual_targets": {
+          "M": 31,
+          "F": 23
+        }
+      },
+      "11201": {
+        "M": 1240,
+        "F": 1045,
+        "M_share": 0.5426695842450766,
+        "F_share": 0.4573304157549234,
+        "annual_targets": {
+          "M": 248,
+          "F": 209
+        }
+      },
+      "11203": {
+        "M": 230,
+        "F": 169,
+        "M_share": 0.5764411027568922,
+        "F_share": 0.42355889724310775,
+        "annual_targets": {
+          "M": 46,
+          "F": 34
+        }
+      },
+      "11204": {
+        "M": 283,
+        "F": 193,
+        "M_share": 0.5945378151260504,
+        "F_share": 0.4054621848739496,
+        "annual_targets": {
+          "M": 56,
+          "F": 39
+        }
+      },
+      "11205": {
+        "M": 371,
+        "F": 396,
+        "M_share": 0.48370273794002605,
+        "F_share": 0.516297262059974,
+        "annual_targets": {
+          "M": 74,
+          "F": 79
+        }
+      },
+      "11206": {
+        "M": 684,
+        "F": 538,
+        "M_share": 0.5597381342062193,
+        "F_share": 0.4402618657937807,
+        "annual_targets": {
+          "M": 137,
+          "F": 107
+        }
+      },
+      "11207": {
+        "M": 447,
+        "F": 405,
+        "M_share": 0.5246478873239436,
+        "F_share": 0.4753521126760563,
+        "annual_targets": {
+          "M": 89,
+          "F": 81
+        }
+      },
+      "11208": {
+        "M": 409,
+        "F": 241,
+        "M_share": 0.6292307692307693,
+        "F_share": 0.3707692307692308,
+        "annual_targets": {
+          "M": 82,
+          "F": 48
+        }
+      },
+      "11209": {
+        "M": 534,
+        "F": 432,
+        "M_share": 0.5527950310559007,
+        "F_share": 0.4472049689440994,
+        "annual_targets": {
+          "M": 107,
+          "F": 86
+        }
+      },
+      "11210": {
+        "M": 191,
+        "F": 163,
+        "M_share": 0.53954802259887,
+        "F_share": 0.4604519774011299,
+        "annual_targets": {
+          "M": 38,
+          "F": 33
+        }
+      },
+      "11211": {
+        "M": 717,
+        "F": 636,
+        "M_share": 0.5299334811529933,
+        "F_share": 0.4700665188470067,
+        "annual_targets": {
+          "M": 144,
+          "F": 127
+        }
+      },
+      "11212": {
+        "M": 306,
+        "F": 284,
+        "M_share": 0.5186440677966102,
+        "F_share": 0.48135593220338985,
+        "annual_targets": {
+          "M": 61,
+          "F": 57
+        }
+      },
+      "11213": {
+        "M": 291,
+        "F": 287,
+        "M_share": 0.5034602076124568,
+        "F_share": 0.49653979238754326,
+        "annual_targets": {
+          "M": 58,
+          "F": 58
+        }
+      },
+      "11214": {
+        "M": 483,
+        "F": 323,
+        "M_share": 0.5992555831265509,
+        "F_share": 0.40074441687344914,
+        "annual_targets": {
+          "M": 96,
+          "F": 65
+        }
+      },
+      "11215": {
+        "M": 933,
+        "F": 894,
+        "M_share": 0.5106732348111659,
+        "F_share": 0.48932676518883417,
+        "annual_targets": {
+          "M": 186,
+          "F": 179
+        }
+      },
+      "11216": {
+        "M": 507,
+        "F": 517,
+        "M_share": 0.4951171875,
+        "F_share": 0.5048828125,
+        "annual_targets": {
+          "M": 101,
+          "F": 104
+        }
+      },
+      "11217": {
+        "M": 653,
+        "F": 617,
+        "M_share": 0.5141732283464567,
+        "F_share": 0.4858267716535433,
+        "annual_targets": {
+          "M": 131,
+          "F": 123
+        }
+      },
+      "11218": {
+        "M": 458,
+        "F": 401,
+        "M_share": 0.5331781140861467,
+        "F_share": 0.4668218859138533,
+        "annual_targets": {
+          "M": 92,
+          "F": 80
+        }
+      },
+      "11219": {
+        "M": 201,
+        "F": 132,
+        "M_share": 0.6036036036036037,
+        "F_share": 0.3963963963963964,
+        "annual_targets": {
+          "M": 40,
+          "F": 27
+        }
+      },
+      "11220": {
+        "M": 425,
+        "F": 314,
+        "M_share": 0.5751014884979703,
+        "F_share": 0.4248985115020298,
+        "annual_targets": {
+          "M": 85,
+          "F": 63
+        }
+      },
+      "11221": {
+        "M": 669,
+        "F": 579,
+        "M_share": 0.5360576923076923,
+        "F_share": 0.4639423076923077,
+        "annual_targets": {
+          "M": 134,
+          "F": 116
+        }
+      },
+      "11222": {
+        "M": 652,
+        "F": 590,
+        "M_share": 0.5249597423510467,
+        "F_share": 0.4750402576489533,
+        "annual_targets": {
+          "M": 130,
+          "F": 118
+        }
+      },
+      "11223": {
+        "M": 343,
+        "F": 256,
+        "M_share": 0.5726210350584308,
+        "F_share": 0.4273789649415693,
+        "annual_targets": {
+          "M": 69,
+          "F": 51
+        }
+      },
+      "11224": {
+        "M": 311,
+        "F": 248,
+        "M_share": 0.556350626118068,
+        "F_share": 0.44364937388193204,
+        "annual_targets": {
+          "M": 62,
+          "F": 50
+        }
+      },
+      "11225": {
+        "M": 425,
+        "F": 418,
+        "M_share": 0.5041518386714117,
+        "F_share": 0.4958481613285884,
+        "annual_targets": {
+          "M": 85,
+          "F": 84
+        }
+      },
+      "11226": {
+        "M": 647,
+        "F": 566,
+        "M_share": 0.5333882934872217,
+        "F_share": 0.4666117065127782,
+        "annual_targets": {
+          "M": 130,
+          "F": 113
+        }
+      },
+      "11228": {
+        "M": 292,
+        "F": 228,
+        "M_share": 0.5615384615384615,
+        "F_share": 0.43846153846153846,
+        "annual_targets": {
+          "M": 58,
+          "F": 46
+        }
+      },
+      "11229": {
+        "M": 362,
+        "F": 307,
+        "M_share": 0.5411061285500748,
+        "F_share": 0.4588938714499253,
+        "annual_targets": {
+          "M": 73,
+          "F": 61
+        }
+      },
+      "11230": {
+        "M": 330,
+        "F": 218,
+        "M_share": 0.6021897810218978,
+        "F_share": 0.3978102189781022,
+        "annual_targets": {
+          "M": 66,
+          "F": 44
+        }
+      },
+      "11231": {
+        "M": 458,
+        "F": 473,
+        "M_share": 0.49194414607948445,
+        "F_share": 0.5080558539205156,
+        "annual_targets": {
+          "M": 92,
+          "F": 94
+        }
+      },
+      "11232": {
+        "M": 191,
+        "F": 177,
+        "M_share": 0.5190217391304348,
+        "F_share": 0.48097826086956524,
+        "annual_targets": {
+          "M": 38,
+          "F": 36
+        }
+      },
+      "11233": {
+        "M": 385,
+        "F": 319,
+        "M_share": 0.546875,
+        "F_share": 0.453125,
+        "annual_targets": {
+          "M": 77,
+          "F": 64
+        }
+      },
+      "11234": {
+        "M": 435,
+        "F": 402,
+        "M_share": 0.5197132616487455,
+        "F_share": 0.48028673835125446,
+        "annual_targets": {
+          "M": 87,
+          "F": 80
+        }
+      },
+      "11235": {
+        "M": 399,
+        "F": 265,
+        "M_share": 0.6009036144578314,
+        "F_share": 0.3990963855421687,
+        "annual_targets": {
+          "M": 80,
+          "F": 53
+        }
+      },
+      "11236": {
+        "M": 302,
+        "F": 242,
+        "M_share": 0.5551470588235294,
+        "F_share": 0.44485294117647056,
+        "annual_targets": {
+          "M": 61,
+          "F": 48
+        }
+      },
+      "11237": {
+        "M": 372,
+        "F": 334,
+        "M_share": 0.5269121813031161,
+        "F_share": 0.4730878186968839,
+        "annual_targets": {
+          "M": 74,
+          "F": 67
+        }
+      },
+      "11238": {
+        "M": 750,
+        "F": 756,
+        "M_share": 0.49800796812749004,
+        "F_share": 0.50199203187251,
+        "annual_targets": {
+          "M": 150,
+          "F": 151
+        }
+      },
+      "11239": {
+        "M": 141,
+        "F": 85,
+        "M_share": 0.6238938053097345,
+        "F_share": 0.37610619469026546,
+        "annual_targets": {
+          "M": 28,
+          "F": 17
+        }
+      },
+      "11249": {
+        "M": 655,
+        "F": 501,
+        "M_share": 0.5666089965397924,
+        "F_share": 0.4333910034602076,
+        "annual_targets": {
+          "M": 131,
+          "F": 100
+        }
+      },
+      "11354": {
+        "M": 214,
+        "F": 156,
+        "M_share": 0.5783783783783784,
+        "F_share": 0.42162162162162165,
+        "annual_targets": {
+          "M": 43,
+          "F": 31
+        }
+      },
+      "11355": {
+        "M": 209,
+        "F": 158,
+        "M_share": 0.5694822888283378,
+        "F_share": 0.4305177111716621,
+        "annual_targets": {
+          "M": 42,
+          "F": 31
+        }
+      },
+      "11356": {
+        "M": 162,
+        "F": 93,
+        "M_share": 0.6352941176470588,
+        "F_share": 0.36470588235294116,
+        "annual_targets": {
+          "M": 32,
+          "F": 19
+        }
+      },
+      "11357": {
+        "M": 207,
+        "F": 183,
+        "M_share": 0.5307692307692308,
+        "F_share": 0.46923076923076923,
+        "annual_targets": {
+          "M": 41,
+          "F": 37
+        }
+      },
+      "11358": {
+        "M": 230,
+        "F": 137,
+        "M_share": 0.6267029972752044,
+        "F_share": 0.37329700272479566,
+        "annual_targets": {
+          "M": 46,
+          "F": 27
+        }
+      },
+      "11360": {
+        "M": 125,
+        "F": 107,
+        "M_share": 0.5387931034482759,
+        "F_share": 0.46120689655172414,
+        "annual_targets": {
+          "M": 25,
+          "F": 21
+        }
+      },
+      "11361": {
+        "M": 205,
+        "F": 139,
+        "M_share": 0.5959302325581395,
+        "F_share": 0.40406976744186046,
+        "annual_targets": {
+          "M": 41,
+          "F": 28
+        }
+      },
+      "11362": {
+        "M": 96,
+        "F": 66,
+        "M_share": 0.5925925925925926,
+        "F_share": 0.4074074074074074,
+        "annual_targets": {
+          "M": 19,
+          "F": 13
+        }
+      },
+      "11363": {
+        "M": 30,
+        "F": 17,
+        "M_share": 0.6382978723404256,
+        "F_share": 0.3617021276595745,
+        "annual_targets": {
+          "M": 6,
+          "F": 3
+        }
+      },
+      "11364": {
+        "M": 203,
+        "F": 128,
+        "M_share": 0.6132930513595166,
+        "F_share": 0.3867069486404834,
+        "annual_targets": {
+          "M": 40,
+          "F": 26
+        }
+      },
+      "11365": {
+        "M": 272,
+        "F": 186,
+        "M_share": 0.5938864628820961,
+        "F_share": 0.40611353711790393,
+        "annual_targets": {
+          "M": 55,
+          "F": 37
+        }
+      },
+      "11366": {
+        "M": 57,
+        "F": 38,
+        "M_share": 0.6,
+        "F_share": 0.4,
+        "annual_targets": {
+          "M": 11,
+          "F": 8
+        }
+      },
+      "11367": {
+        "M": 179,
+        "F": 90,
+        "M_share": 0.6654275092936803,
+        "F_share": 0.3345724907063197,
+        "annual_targets": {
+          "M": 36,
+          "F": 18
+        }
+      },
+      "11368": {
+        "M": 430,
+        "F": 258,
+        "M_share": 0.625,
+        "F_share": 0.375,
+        "annual_targets": {
+          "M": 86,
+          "F": 52
+        }
+      },
+      "11369": {
+        "M": 188,
+        "F": 116,
+        "M_share": 0.618421052631579,
+        "F_share": 0.3815789473684211,
+        "annual_targets": {
+          "M": 38,
+          "F": 23
+        }
+      },
+      "11370": {
+        "M": 143,
+        "F": 110,
+        "M_share": 0.5652173913043478,
+        "F_share": 0.43478260869565216,
+        "annual_targets": {
+          "M": 29,
+          "F": 22
+        }
+      },
+      "11371": {
+        "M": 1,
+        "F": 0,
+        "M_share": 1.0,
+        "F_share": 0.0,
+        "annual_targets": {
+          "M": 0,
+          "F": 0
+        }
+      },
+      "11372": {
+        "M": 373,
+        "F": 308,
+        "M_share": 0.5477239353891337,
+        "F_share": 0.4522760646108664,
+        "annual_targets": {
+          "M": 74,
+          "F": 62
+        }
+      },
+      "11373": {
+        "M": 381,
+        "F": 240,
+        "M_share": 0.6135265700483091,
+        "F_share": 0.3864734299516908,
+        "annual_targets": {
+          "M": 76,
+          "F": 48
+        }
+      },
+      "11374": {
+        "M": 313,
+        "F": 215,
+        "M_share": 0.5928030303030303,
+        "F_share": 0.4071969696969697,
+        "annual_targets": {
+          "M": 63,
+          "F": 43
+        }
+      },
+      "11375": {
+        "M": 568,
+        "F": 388,
+        "M_share": 0.5941422594142259,
+        "F_share": 0.40585774058577406,
+        "annual_targets": {
+          "M": 113,
+          "F": 78
+        }
+      },
+      "11377": {
+        "M": 524,
+        "F": 383,
+        "M_share": 0.577728776185226,
+        "F_share": 0.422271223814774,
+        "annual_targets": {
+          "M": 105,
+          "F": 76
+        }
+      },
+      "11378": {
+        "M": 217,
+        "F": 199,
+        "M_share": 0.5216346153846154,
+        "F_share": 0.47836538461538464,
+        "annual_targets": {
+          "M": 43,
+          "F": 40
+        }
+      },
+      "11379": {
+        "M": 238,
+        "F": 187,
+        "M_share": 0.56,
+        "F_share": 0.44,
+        "annual_targets": {
+          "M": 48,
+          "F": 37
+        }
+      },
+      "11385": {
+        "M": 688,
+        "F": 515,
+        "M_share": 0.57190357439734,
+        "F_share": 0.42809642560266004,
+        "annual_targets": {
+          "M": 138,
+          "F": 103
+        }
+      },
+      "11411": {
+        "M": 47,
+        "F": 31,
+        "M_share": 0.6025641025641025,
+        "F_share": 0.3974358974358974,
+        "annual_targets": {
+          "M": 10,
+          "F": 6
+        }
+      },
+      "11412": {
+        "M": 120,
+        "F": 64,
+        "M_share": 0.6521739130434783,
+        "F_share": 0.34782608695652173,
+        "annual_targets": {
+          "M": 24,
+          "F": 13
+        }
+      },
+      "11413": {
+        "M": 125,
+        "F": 88,
+        "M_share": 0.5868544600938967,
+        "F_share": 0.4131455399061033,
+        "annual_targets": {
+          "M": 25,
+          "F": 18
+        }
+      },
+      "11414": {
+        "M": 163,
+        "F": 166,
+        "M_share": 0.49544072948328266,
+        "F_share": 0.5045592705167173,
+        "annual_targets": {
+          "M": 33,
+          "F": 33
+        }
+      },
+      "11415": {
+        "M": 131,
+        "F": 106,
+        "M_share": 0.5527426160337553,
+        "F_share": 0.4472573839662447,
+        "annual_targets": {
+          "M": 26,
+          "F": 21
+        }
+      },
+      "11416": {
+        "M": 90,
+        "F": 66,
+        "M_share": 0.5769230769230769,
+        "F_share": 0.4230769230769231,
+        "annual_targets": {
+          "M": 18,
+          "F": 13
+        }
+      },
+      "11417": {
+        "M": 137,
+        "F": 95,
+        "M_share": 0.5905172413793104,
+        "F_share": 0.40948275862068967,
+        "annual_targets": {
+          "M": 27,
+          "F": 19
+        }
+      },
+      "11418": {
+        "M": 156,
+        "F": 145,
+        "M_share": 0.5182724252491694,
+        "F_share": 0.48172757475083056,
+        "annual_targets": {
+          "M": 31,
+          "F": 29
+        }
+      },
+      "11419": {
+        "M": 127,
+        "F": 83,
+        "M_share": 0.6047619047619047,
+        "F_share": 0.3952380952380952,
+        "annual_targets": {
+          "M": 25,
+          "F": 17
+        }
+      },
+      "11420": {
+        "M": 161,
+        "F": 104,
+        "M_share": 0.6075471698113207,
+        "F_share": 0.39245283018867927,
+        "annual_targets": {
+          "M": 32,
+          "F": 21
+        }
+      },
+      "11421": {
+        "M": 198,
+        "F": 136,
+        "M_share": 0.592814371257485,
+        "F_share": 0.40718562874251496,
+        "annual_targets": {
+          "M": 40,
+          "F": 27
+        }
+      },
+      "11422": {
+        "M": 95,
+        "F": 55,
+        "M_share": 0.6333333333333333,
+        "F_share": 0.36666666666666664,
+        "annual_targets": {
+          "M": 19,
+          "F": 11
+        }
+      },
+      "11423": {
+        "M": 87,
+        "F": 50,
+        "M_share": 0.635036496350365,
+        "F_share": 0.36496350364963503,
+        "annual_targets": {
+          "M": 17,
+          "F": 10
+        }
+      },
+      "11424": {
+        "M": 1,
+        "F": 0,
+        "M_share": 1.0,
+        "F_share": 0.0,
+        "annual_targets": {
+          "M": 0,
+          "F": 0
+        }
+      },
+      "11426": {
+        "M": 81,
+        "F": 52,
+        "M_share": 0.6090225563909775,
+        "F_share": 0.39097744360902253,
+        "annual_targets": {
+          "M": 16,
+          "F": 11
+        }
+      },
+      "11427": {
+        "M": 67,
+        "F": 55,
+        "M_share": 0.5491803278688525,
+        "F_share": 0.45081967213114754,
+        "annual_targets": {
+          "M": 13,
+          "F": 11
+        }
+      },
+      "11428": {
+        "M": 63,
+        "F": 40,
+        "M_share": 0.6116504854368932,
+        "F_share": 0.3883495145631068,
+        "annual_targets": {
+          "M": 13,
+          "F": 8
+        }
+      },
+      "11429": {
+        "M": 60,
+        "F": 40,
+        "M_share": 0.6,
+        "F_share": 0.4,
+        "annual_targets": {
+          "M": 12,
+          "F": 8
+        }
+      },
+      "11430": {
+        "M": 1,
+        "F": 2,
+        "M_share": 0.3333333333333333,
+        "F_share": 0.6666666666666666,
+        "annual_targets": {
+          "M": 0,
+          "F": 1
+        }
+      },
+      "11432": {
+        "M": 157,
+        "F": 119,
+        "M_share": 0.5688405797101449,
+        "F_share": 0.4311594202898551,
+        "annual_targets": {
+          "M": 31,
+          "F": 24
+        }
+      },
+      "11433": {
+        "M": 119,
+        "F": 78,
+        "M_share": 0.6040609137055838,
+        "F_share": 0.39593908629441626,
+        "annual_targets": {
+          "M": 24,
+          "F": 15
+        }
+      },
+      "11434": {
+        "M": 250,
+        "F": 152,
+        "M_share": 0.6218905472636815,
+        "F_share": 0.3781094527363184,
+        "annual_targets": {
+          "M": 50,
+          "F": 30
+        }
+      },
+      "11435": {
+        "M": 234,
+        "F": 168,
+        "M_share": 0.582089552238806,
+        "F_share": 0.417910447761194,
+        "annual_targets": {
+          "M": 47,
+          "F": 33
+        }
+      },
+      "11436": {
+        "M": 74,
+        "F": 44,
+        "M_share": 0.6271186440677966,
+        "F_share": 0.3728813559322034,
+        "annual_targets": {
+          "M": 15,
+          "F": 9
+        }
+      },
+      "11439": {
+        "M": 0,
+        "F": 1,
+        "M_share": 0.0,
+        "F_share": 1.0,
+        "annual_targets": {
+          "M": 0,
+          "F": 0
+        }
+      },
+      "11580": {
+        "M": 3,
+        "F": 4,
+        "M_share": 0.42857142857142855,
+        "F_share": 0.5714285714285714,
+        "annual_targets": {
+          "M": 0,
+          "F": 1
+        }
+      },
+      "11691": {
+        "M": 157,
+        "F": 114,
+        "M_share": 0.5793357933579336,
+        "F_share": 0.42066420664206644,
+        "annual_targets": {
+          "M": 31,
+          "F": 23
+        }
+      },
+      "11692": {
+        "M": 98,
+        "F": 111,
+        "M_share": 0.4688995215311005,
+        "F_share": 0.5311004784688995,
+        "annual_targets": {
+          "M": 20,
+          "F": 22
+        }
+      },
+      "11693": {
+        "M": 93,
+        "F": 71,
+        "M_share": 0.5670731707317073,
+        "F_share": 0.4329268292682927,
+        "annual_targets": {
+          "M": 19,
+          "F": 14
+        }
+      },
+      "11694": {
+        "M": 94,
+        "F": 92,
+        "M_share": 0.5053763440860215,
+        "F_share": 0.4946236559139785,
+        "annual_targets": {
+          "M": 19,
+          "F": 18
+        }
+      },
+      "11697": {
+        "M": 12,
+        "F": 16,
+        "M_share": 0.42857142857142855,
+        "F_share": 0.5714285714285714,
+        "annual_targets": {
+          "M": 3,
+          "F": 3
+        }
+      }
+    }
+  },
+  "name_rules": {
+    "distinct_names": 17995,
+    "markov_eligible_distinct_names": 17806,
+    "invented_name_min_length": 2,
+    "invented_name_max_length": 12,
+    "repeated_unit_sizes": [
+      2,
+      3
+    ],
+    "names_with_repeated_units": 305,
+    "observed_repetition_rate": 0.01712905762102662,
+    "top_repeated_units": [
+      [
+        "2:CO",
+        13
+      ],
+      [
+        "2:LI",
+        12
+      ],
+      [
+        "2:PA",
+        7
+      ],
+      [
+        "2:VI",
+        6
+      ],
+      [
+        "2:AN",
+        5
+      ],
+      [
+        "2:BA",
+        5
+      ],
+      [
+        "2:PO",
+        5
+      ],
+      [
+        "2:NA",
+        4
+      ],
+      [
+        "2:RO",
+        4
+      ],
+      [
+        "2:TA",
+        4
+      ],
+      [
+        "2:TI",
+        4
+      ],
+      [
+        "2:MA",
+        4
+      ],
+      [
+        "2:MO",
+        4
+      ],
+      [
+        "2:NI",
+        3
+      ],
+      [
+        "2:BI",
+        3
+      ],
+      [
+        "2:CE",
+        3
+      ],
+      [
+        "2:OR",
+        3
+      ],
+      [
+        "2:GO",
+        3
+      ],
+      [
+        "2:KI",
+        3
+      ],
+      [
+        "2:KO",
+        3
+      ],
+      [
+        "2:LU",
+        3
+      ],
+      [
+        "2:AT",
+        3
+      ],
+      [
+        "2:MI",
+        3
+      ],
+      [
+        "2:IN",
+        3
+      ],
+      [
+        "2:TO",
+        3
+      ],
+      [
+        "3:CHA",
+        2
+      ],
+      [
+        "3:BAM",
+        2
+      ],
+      [
+        "2:BE",
+        2
+      ],
+      [
+        "2:BO",
+        2
+      ],
+      [
+        "2:CA",
+        2
+      ]
+    ],
+    "repeating_name_examples": [
+      "ACHACHAIRU",
+      "ADAIDAI",
+      "ALFALFA",
+      "ANAND",
+      "ANANINA",
+      "ANGANG",
+      "AZAZEL",
+      "BABA",
+      "BABADZHANOV",
+      "BABAR",
+      "BABAYEV",
+      "BAEBAE",
+      "BALILI",
+      "BAM-BAM",
+      "BAMBAM",
+      "BANANA",
+      "BANBAN",
+      "BAOBAO",
+      "BARBARA",
+      "BAYBAY",
+      "BEBE",
+      "BEBESITO",
+      "BEIBEI",
+      "BERNINI",
+      "BIBI",
+      "BIBIMBOP",
+      "BIUBIU",
+      "BOBO",
+      "BOBOJI",
+      "BONBON",
+      "BOOBOO",
+      "BOUBOUKI",
+      "BOWBOW",
+      "BOYBOY",
+      "BREASTPAPAS",
+      "BUBU",
+      "CACACE",
+      "CACAO",
+      "CALCAL",
+      "CE-CE",
+      "CECE",
+      "CECERE",
+      "CEECEE",
+      "CHACHA",
+      "CHACUTZUTZU",
+      "CHECHE",
+      "CHI-CHI",
+      "CHICHI",
+      "CHIHIRO",
+      "CHIHUAHUA",
+      "CHIQUITITA",
+      "CHOCHO",
+      "CHORORO",
+      "CHUCHU",
+      "CICI",
+      "COCO",
+      "COCO-BELLE",
+      "COCO-CHANEL",
+      "COCOA",
+      "COCOCHANEL",
+      "COCOLATE",
+      "COCOLINO",
+      "COCOLO",
+      "COCOMELON",
+      "COCONINO",
+      "COCONUT",
+      "COCOPUFF",
+      "COCOS",
+      "CUCU",
+      "CUCUZZA",
+      "DADA",
+      "DANDAN",
+      "DDODDO",
+      "DEDE",
+      "DEEDEE",
+      "DEIDEI",
+      "DELILIAH",
+      "DIDI",
+      "DIDION",
+      "DINDIN"
+    ]
+  },
+  "nta_reference_layer": {
+    "role": "visual orientation only; no dog records were reassigned",
+    "original_features": 262,
+    "retained_features": 262,
+    "simplification_tolerance_degrees": 0.00035,
+    "labels": "official representative points generated inside each NTA geometry"
+  }
+}
